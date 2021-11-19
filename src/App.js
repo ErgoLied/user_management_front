@@ -1,25 +1,27 @@
-import logo from './logo.svg';
+import {Link, Route, Switch} from 'react-router-dom';
+
 import './App.css';
+import Users from './components/users/Users';
+import CreateUser from './components/createUser/CreateUser';
+import UpdDelUser from './components/updDelUser/UpdDelUser';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div>
+            <Link to={'/create'}>
+                <button className={'blue-bg blue-shadow mb16 ali-right'}>Create User</button>
+            </Link>
+
+            <div className={'wrap'}>
+                <Users/>
+
+                <Switch>
+                    <Route path={'/create'} component={CreateUser}/>
+                    <Route path={'/edit'} component={UpdDelUser}/>
+                </Switch>
+            </div>
+        </div>
+    );
 }
 
 export default App;
